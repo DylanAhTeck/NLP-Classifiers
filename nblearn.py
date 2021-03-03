@@ -14,8 +14,6 @@ def load_data(dir, folder):
     #print(list)
 
 
-BASE_DATA_DIR = "Enron-Archive/enron4"
-
 path = sys.argv[1]
 
 spam = [(text, "spam") for text in load_data(path, 'spam')]
