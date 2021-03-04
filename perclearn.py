@@ -1,6 +1,6 @@
 from pathlib import Path
 import sys 
-
+import random 
 def load_data(dir, folder):
     list = []
     for path in Path(dir).rglob(folder + '/*.txt'):
@@ -23,6 +23,7 @@ def process(list):
     yHam = -1
     
     for iter in range(1, MaxIter):
+        random.shuffle(list)
         for (email, label) in list:
             y = ySpam if label == "spam" else yHam
 
