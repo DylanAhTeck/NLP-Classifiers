@@ -57,9 +57,13 @@ def load_data(dir):
     print(spamRecall)
     print(hamRecall)
 
-    spamF1 = 
+    spamF1 = (2 * spamPrecision * spamRecall)/(spamPrecision + spamRecall)
+    hamF2 = (2 * hamPrecision * hamRecall)/(hamPrecision + hamRecall)
     #precision, recall, and F1 score
     #F1 = 2PR /(P+R)
+
+    print(spamF1)
+    print(hamF2)
 
 dir = sys.argv[1]
 load_data(dir)
