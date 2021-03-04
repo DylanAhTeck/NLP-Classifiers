@@ -1,5 +1,6 @@
 import sys 
 from pathlib import Path
+import math
 
 def read_parameters():
 
@@ -25,14 +26,14 @@ def label_data(dir, spamDict, hamDict):
     #for path in Path(dir).rglob('*.txt'):
     for path in Path(dir).rglob('*.txt'):
         with open(path, "r", encoding="latin1") as f:
-            pHam = 1
-            pSpam = 1
+            pHam = 0
+            pSpam = 0
             body = f.read().split()
             for word in body:
                 #Ignore words that don't exist
                 if word in hamDict:
-                    pHam = pHam * hamDict[word]
-                    pSpam = pSpam * spamDict[word]
+                    pHam = pHam + math.log(hamDict[word])
+                    pSpam = pSpam + math.log(spamDict[word])
             if pSpam > pHam:
                 output.write("spam " + str(path) + "\n")
             else:
